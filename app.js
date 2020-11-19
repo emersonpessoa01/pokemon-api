@@ -10,7 +10,7 @@ import { pokemonRouter } from "./routes/pokemonRouter.js";
 (async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://emersonpessoa:salmo119@cluster0.cginj.mongodb.net/projetos?retryWrites=true&w=majority",
+      `mongodb+srv://${process.env.USERDB}:${process.env.PWDDB}@cluster0.cginj.mongodb.net/projetos?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
   res.send("API em execucao");
 });
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log(`Servidor em execucao na porta ${PORT}`);
