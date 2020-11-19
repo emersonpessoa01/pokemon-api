@@ -1,8 +1,8 @@
 import { db } from "../models/index.js";
 
-const Pokemon = db.pokemon;
+const pokemonDB = db.pokemon;
 const create = async (req, res) => {
-  const pokemon = new Pokemon({
+  const pokemon = new pokemonDB({
     Pokemon: req.body.Pokemon,
     GIF: req.body.GIF,
     HP: req.body.HP,
@@ -32,7 +32,7 @@ const findAll = async (req, res) => {
     : {};
 
   try {
-    const data = await Pokemon.find(condition);
+    const data = await pokemonDB.find(condition);
     if (data.length < 1) {
       res.status(404).send({
         message: "Pokemon nao encontrado",
@@ -51,7 +51,7 @@ const findOne = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const data = await Pokemon.findById({ _id: id });
+    const data = await pokemonDB.findById({ _id: id });
     if (data.length < 1) {
       res.status(404).send({
         message: `Pokemon id:${id} nao encontrado`,
@@ -60,7 +60,9 @@ const findOne = async (req, res) => {
       res.send(data);
     }
   } catch (error) {
-    res.status(500).send({ message: "Erro ao buscar o Documento id: " + id });
+    res.status(500).send({ 
+      message: `Erro ao buscar o Documento id: ${id}`
+     });
   }
 };
 
@@ -74,13 +76,13 @@ const update = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const data = await Pokemon.findByIdUpdate({ _id: id }, req.body, {
+    const data = await pokemonDB.findByIdUpdate({ _id: id }, req.body, {
       new: true,
     });
 
     if (data.length < 1) {
       res.status(404).send({
-        message: "Pokemon nao encontrado para atualizacao",
+        message: `Pokemon id : ${id} nao encontrado para atualizacao`,
       });
     } else {
       res.send(data);
@@ -94,7 +96,7 @@ const remove = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const data = await Pokemon.findByIdRemove({ _id: id });
+    const data = await pokemonDB.findByIdRemove({ _id: id });
     if (data.length < 1) {
       res.send({
         message: "Pokemon excluido com sucesso",
@@ -111,14 +113,14 @@ const remove = async (req, res) => {
 
 const removeAll = async (req, res) => {
   try {
-    const data = await Pokemon.deleteMany();
+    const data = await pokemonDB.deleteMany();
     if (data.length < 1) {
       res.status(404).send({
         message: "Nenhum Pokemon encontrado para exclusao",
       });
     } else {
       res.send({
-        message: "Pokemon excluidos com sucesso",
+        message: "Pokemons excluidos com sucesso",
       });
     }
   } catch (error) {

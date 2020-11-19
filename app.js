@@ -1,18 +1,24 @@
 import express from "express";
+import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 
 import { pokemonRouter } from "./routes/pokemonRouter.js";
 
-import { db } from "./models/index.js";
+// import { db } from "./models/index.js";
 
 (async () => {
   try {
-    await db.mongoose.connect(db.url, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(
+      "mongodb+srv://emersonpessoa:salmo119@cluster0.cginj.mongodb.net/projetos?retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
+    console.log("Conectado no banco com sucesso");
   } catch (error) {
+    console.log("Erro ao conectar ao banco");
     process.exit();
   }
 })();
