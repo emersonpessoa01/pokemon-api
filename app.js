@@ -1,9 +1,10 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
 
-import { pokemonRouter } from './routes/pokemonRouter.js';
+import { pokemonRouter } from "./routes/pokemonRouter.js";
 
-import { db } from './models/index.js';
+import { db } from "./models/index.js";
 
 (async () => {
   try {
@@ -20,11 +21,16 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "https://pokemon-whrath.herokuapp.com/",
+  })
+);
 
 app.use(pokemonRouter);
 
-app.get('/', (req, res) => {
-  res.send('API em execucao');
+app.get("/", (req, res) => {
+  res.send("API em execucao");
 });
 
 const PORT = process.env.PORT || 8081;

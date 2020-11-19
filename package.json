@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node -r dotenv/config --experimental-modules app.js",
+    "start": "nodemon -r dotenv/config --experimental-modules app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,10 +15,11 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.20",
-    "nodemon": "^2.0.4",
+    "mongoose": "^5.10.15",
+    "mongoose-date-format": "^1.2.0",
+    "nodemon": "^2.0.6",
     "winston": "^3.3.3",
-    "winston-mongodb": "^5.0.1"
+    "winston-mongodb": "^5.0.5"
   },
   "type": "module"
 }

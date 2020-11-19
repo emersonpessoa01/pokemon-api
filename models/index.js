@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import pokemonModel from './pokemonModel.js'
+import pokemonModel from "../models/pokemonModel.js"
 
 const db = {};
 db.mongoose = mongoose;
