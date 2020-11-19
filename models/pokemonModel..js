@@ -34,6 +34,6 @@ export default (moongose) => {
     },
   });
 
-  const Pokemon = mongoose.model("pokemon", schema, pokemon);
+  const Pokemon = mongoose.model("pokemon", schema, "pokemon");
   return Pokemon;
 };
