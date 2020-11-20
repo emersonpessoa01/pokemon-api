@@ -2,33 +2,36 @@ import mongooseDateFormat from "mongoose-date-format";
 
 export default (mongoose) => {
   const pokemonSchema = mongoose.Schema({
-    Pokemon: {
+    name: {
       type: String,
       required: true,
     },
-    GIF: {
+    img: {
       type: String,
       required: true,
     },
-    HP: {
+    hp: {
       type: Number,
       required: true,
+      min:0,
     },
-    Attack: {
+    attack: {
       type: Number,
       required: true,
+      min:0,
     },
-    Defense: {
+    defense: {
       type: Number,
       required: true,
+      min:0,
     },
-    Speed: {
+    speed: {
       type: Number,
       required: true,
+      min:0
     },
-    Description: {
-      type: Number,
-      required: true,
+    active: {
+      type: Boolean,
     },
     lastModified: {
       type: Date,

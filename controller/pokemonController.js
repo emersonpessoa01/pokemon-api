@@ -3,13 +3,13 @@ import { db } from "../models/index.js";
 const pokemonDB = db.pokemon;
 const create = async (req, res) => {
   const pokemon = new pokemonDB({
-    Pokemon: req.body.Pokemon,
-    GIF: req.body.GIF,
-    HP: req.body.HP,
-    Attack: req.body.Attack,
-    Defense: req.body.Defense,
-    Speed: req.body.Speed,
-    Description: req.body.Description,
+    name: req.body.name,
+    img: req.body.img,
+    hp: req.body.hp,
+    attack: req.body.attack,
+    defense: req.body.defense,
+    speed: req.body.speed,
+    active: req.body.active,
   });
 
   try {
@@ -25,7 +25,7 @@ const create = async (req, res) => {
 };
 
 const findAll = async (req, res) => {
-  const name = req.query.Pokemon;
+  const name = req.query.name;
 
   var condition = name
     ? { name: { $regex: new RegExp(name), $options: "i" } }
