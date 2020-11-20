@@ -36,7 +36,7 @@ export default (mongoose) => {
     },
   });
 
-  const pokemonModel = mongoose.model("pokemon", pokemonSchema, "pokemon"); //para criar student no singular
+  const pokemonModel = mongoose.model("pokemon", pokemonSchema, "pokemon"); //para criar pokemon no singular
   pokemonSchema.plugin(mongooseDateFormat);
   return pokemonModel;
 };
