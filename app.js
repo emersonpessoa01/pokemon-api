@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import cors from "cors";
+// import cors from "cors";
 
 import { pokemonRouter } from "./routes/pokemonRouter.js";
 
@@ -27,11 +27,11 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "https://pokemon-whrath.herokuapp.com/",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://pokemon-whrath.herokuapp.com/",
+//   })
+// );
 
 app.use(pokemonRouter);
 
