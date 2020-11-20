@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
   res.send("API em execucao");
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8082;
 
 app.listen(PORT, () => {
   console.log(`Servidor em execucao na porta ${PORT}`);
