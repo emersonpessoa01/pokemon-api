@@ -13,22 +13,22 @@ export default (mongoose) => {
     hp: {
       type: Number,
       required: true,
-      min:0,
+      min: 0,
     },
     attack: {
       type: Number,
       required: true,
-      min:0,
+      min: 0,
     },
     defense: {
       type: Number,
       required: true,
-      min:0,
+      min: 0,
     },
     speed: {
       type: Number,
       required: true,
-      min:0
+      min: 0,
     },
     active: {
       type: Boolean,
@@ -38,13 +38,13 @@ export default (mongoose) => {
       default: Date.now(),
     },
   });
-  
-  pokemonSchema.method("toJSON",function(){
-    const {__v, _id, ...object}= this.toObject()
-    object.id = _id
 
-    return object
-  })
+  pokemonSchema.method("toJSON", function () {
+    const { __v, _id, ...object } = this.toObject();
+    object.id = _id;
+
+    return object;
+  });
 
   const pokemonModel = mongoose.model("pokemon", pokemonSchema, "pokemon"); //para criar pokemon no singular
   pokemonSchema.plugin(mongooseDateFormat);
