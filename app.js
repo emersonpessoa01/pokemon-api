@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-// import cors from "cors";
+import cors from "cors";
 
 import { pokemonRouter } from "./routes/pokemonRouter.js";
 
@@ -27,6 +27,13 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  console.log("Acessou o Middleware!");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+  app.use(cors());
+  next();
+}); 
 // app.use(
 //   cors({
 //     origin: "https://pokemon-whrath.herokuapp.com/",
@@ -42,5 +49,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 8082;
 
 app.listen(PORT, () => {
-  console.log(`Servidor em execucao na porta ${PORT}`);
+  console.log(`Servidor em execucao na porta ${PORT} http://localhost:8082/`);
 });
