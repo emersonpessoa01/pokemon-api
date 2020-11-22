@@ -1,16 +1,16 @@
-import winston, { format } from "winston";
-import winstondb from "winston-mongodb";
+import winston from "winston";
+// import winstondb from "winston-mongodb";
 
 const { combine, timestmap, label, printf } = winston.format;
 
-const myFormat = format.printf(({ level, message, label, timestmap }) => {
+const myFormat = printf(({ level, message, label, timestmap }) => {
   return `${timestmap} [${label}] ${level} : ${message}`;
 });
 
-const logger = createLogger({
+const logger = winston.createLogger({
+  level: "silly",
   transports: [
-    // new transports.Console(),
-    new transports.MongoDB({
+    new (winston.transports.MongoDB)({
       level: "info",
       user: process.env.USERDB,
       pwddb: process.env.PWDDB,
@@ -23,11 +23,11 @@ const logger = createLogger({
       },
     }),
   ],
-  format: format.combine(
+  format: combine(
     label({
       label: "pokemon-api",
     }),
-    format.timestamp(),
+    timestamp(),
     myFormat
   ),
 });

@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+// import { logger } from "./config/logger.js";
 
 import { pokemonRouter } from "./routes/pokemonRouter.js";
 
@@ -30,10 +31,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   console.log("Acessou o Middleware!");
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   app.use(cors());
   next();
-}); 
+});
 // app.use(f
 //   cors({
 //     origin: "https://pokemon-whrath.herokuapp.com/",

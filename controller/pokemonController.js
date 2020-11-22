@@ -39,11 +39,13 @@ const findAll = async (req, res) => {
       });
     } else {
       res.send(data);
+      logger.info("findAll /pokemon");
     }
   } catch (error) {
     res
       .status(500)
       .send({ message: error.message || "Erro ao listar todos os documentos" });
+    logger.info(`findAll /pokemon - ${err.message}`);
   }
 };
 
@@ -60,9 +62,9 @@ const findOne = async (req, res) => {
       res.send(data);
     }
   } catch (error) {
-    res.status(500).send({ 
-      message: `Erro ao buscar o Documento id: ${id}`
-     });
+    res.status(500).send({
+      message: `Erro ao buscar o Documento id: ${id}`,
+    });
   }
 };
 
