@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 app.use(pokemonRouter);
 
 app.get("/", (req, res) => {
-  res.send("API em execucao");
+  res.send("FALA DEV - API em execucao");
 });
 
 const PORT = process.env.PORT || 8082;
